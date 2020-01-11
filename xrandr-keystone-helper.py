@@ -30,7 +30,6 @@
 # C pixel height
 
 from subprocess import call
-import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button, TextBox
 import time
@@ -67,11 +66,11 @@ q2y = C
 q3x = A  # bottom left
 q3y = C
 
-x = np.array([q0x, q1x, q2x, q3x, q0x])
-y = np.array([q0y, q1y, q2y, q3y, q0y])
+x = [q0x, q1x, q2x, q3x, q0x]
+y = [q0y, q1y, q2y, q3y, q0y]
 
-x1 = np.array([q0x, q1x, q2x, q3x, q0x])
-y1 = np.array([q0y, q1y, q2y, q3y, q0y])
+x1 = [q0x, q1x, q2x, q3x, q0x]
+y1 = [q0y, q1y, q2y, q3y, q0y]
 
 l, = plt.plot(x1, y1, lw=2, color='red')
 lm, = plt.plot(x, y, lw=1, color='green')
@@ -139,8 +138,8 @@ def update(val):
     Q3x = A-d3x  # bottom left
     Q3y = C-d3y
 
-    xs = np.array([Q0x, Q1x, Q2x, Q3x, Q0x])
-    ys = np.array([Q0y, Q1y, Q2y, Q3y, Q0y])
+    xs = [Q0x, Q1x, Q2x, Q3x, Q0x]
+    ys = [Q0y, Q1y, Q2y, Q3y, Q0y]
 
     l.set_xdata(xs)
     l.set_ydata(ys)

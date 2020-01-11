@@ -8,7 +8,7 @@ The result could be sufficient for viewing movies or presenting slides.
 
 Use Python 3.x and install the dependencies with: 
 
-pip3 install numpy matplotlib --user  
+pip3 install matplotlib --user  
 
 Execution:  
 ```python3 xrandr-keystone-helper.py```
