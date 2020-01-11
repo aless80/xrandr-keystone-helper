@@ -1,19 +1,18 @@
 xrandr-keystone-helper
 
-This programm helps finding the parameters for xrandr --transform.
-Helpfull for e.g. keystone-correction for projektors.
+This program helps finding the parameters for xrandr --transform.
+This can be helpful for setting up [keystone-correction](https://www.projectorpeople.com/resources/keystone-correction.asp) for projectors.
 
-Transformed pictures with "xrandr --tranform" may (very likely) still have some issues espacially around the cursor.
-The result could sufficide for viewing movies or presenting slides.
+Transformed pictures with "xrandr --tranform" may (very likely) still have some issues especially around the cursor.
+The result could be sufficient for viewing movies or presenting slides.
 
-Dependencies:
-python 3
-numpy
-matplotlib
+Use Python 3.x and install the dependencies with: 
 
-execute:
-$python xrandr-keystone-helper.py
+pip3 install numpy matplotlib --user  
 
-adjust the red tetragon/quadrilateral and test the result until you find the right parameters. The string to use with xrandr --transform gets printed to the terminal.
+Execution:  
+```python3 xrandr-keystone-helper.py```
 
-To get the Testbutton working change eDP1 to the output you want to configure e.g. VGA1.
+Adjust the red tetragon/quadrilateral and test the result until you find the right parameters. The string to use with xrandr --transform gets printed to the terminal.
+
+To get the Test button working change the eDP1 to the output you want to configure e.g. VGA1 or HDMI-1.

@@ -32,7 +32,7 @@
 from subprocess import call
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.widgets import Slider, Button
+from matplotlib.widgets import Slider, Button, TextBox
 import time
 
 fig, ax = plt.subplots()
@@ -44,7 +44,6 @@ plt.subplots_adjust(bottom=0.35, top=0.76)
 #     A=0   B=1366
 
 global mon
-mon = "eDP1"
 global A
 global B
 global C
@@ -98,6 +97,7 @@ s2y = Slider(ax2y, 'q2y', -2000,  2000, valinit=q2y)
 s3x = Slider(ax3x, 'q3x', -2000,  2000, valinit=q3x)
 s3y = Slider(ax3y, 'q3y', -2000,  2000, valinit=q3y)
 
+mon = "eDP1" #VGA-1, HDMI-1, etc
 
 def update(val):
 
@@ -180,12 +180,15 @@ s2y.on_changed(update)
 s3x.on_changed(update)
 s3y.on_changed(update)
 
-resetax = plt.axes([0.8, 0.025, 0.1, 0.04])
-resetbutton = Button(resetax, 'Reset', color=axcolor, hovercolor='0.975')
-applyax = plt.axes([0.2, 0.025, 0.1, 0.04])
+applyax = plt.axes([0.15, 0.025, 0.1, 0.04])
 applybutton = Button(applyax, 'Apply', color=axcolor, hovercolor='0.975')
-testax = plt.axes([0.5-0.02, 0.025, 0.1, 0.04])
+outputax = plt.axes([0.4, 0.025, 0.1, 0.04])
+outputtext = TextBox(outputax, initial=mon)
+testax = plt.axes([0.55-0.02, 0.025, 0.1, 0.04])
 testbutton = Button(testax, 'Test', color=axcolor, hovercolor='0.975')
+resetax = plt.axes([0.75, 0.025, 0.1, 0.04])
+resetbutton = Button(resetax, 'Reset', color=axcolor, hovercolor='0.975')
+
 
 
 def reset(event):
@@ -202,6 +205,9 @@ def reset(event):
 def applyx(event):
     call(['xrandr', '--output', mon, '--transform', '%f,%f,%f,%f,%f,%f,%f,%f,%f' % (m00,m01,m02,m10,m11,m12,m20,m21,m22)])
 
+def update_output(text):
+    global mon
+    mon = text
 
 def test(event):
     call(['xrandr', '--output', mon, '--transform', '%f,%f,%f,%f,%f,%f,%f,%f,%f' % (m00,m01,m02,m10,m11,m12,m20,m21,m22)])
@@ -212,6 +218,7 @@ def test(event):
 resetbutton.on_clicked(reset)
 applybutton.on_clicked(applyx)
 testbutton.on_clicked(test)
+outputtext.on_submit(update_output)
 
 plt.show()
 
