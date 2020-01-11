@@ -180,13 +180,13 @@ s2y.on_changed(update)
 s3x.on_changed(update)
 s3y.on_changed(update)
 
-applyax = plt.axes([0.15, 0.025, 0.1, 0.04])
+applyax = plt.axes([0.1, 0.025, 0.1, 0.04])
 applybutton = Button(applyax, 'Apply', color=axcolor, hovercolor='0.975')
 outputax = plt.axes([0.4, 0.025, 0.1, 0.04])
-outputtext = TextBox(outputax, initial=mon)
+outputtext = TextBox(outputax, label="Output: ", initial=mon)
 testax = plt.axes([0.55-0.02, 0.025, 0.1, 0.04])
 testbutton = Button(testax, 'Test', color=axcolor, hovercolor='0.975')
-resetax = plt.axes([0.75, 0.025, 0.1, 0.04])
+resetax = plt.axes([0.8, 0.025, 0.1, 0.04])
 resetbutton = Button(resetax, 'Reset', color=axcolor, hovercolor='0.975')
 
 
